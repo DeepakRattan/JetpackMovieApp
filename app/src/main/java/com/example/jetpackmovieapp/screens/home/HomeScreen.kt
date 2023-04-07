@@ -55,7 +55,7 @@ fun MainContent(
             items(items = movieList) {
                 MovieRow(movie = it) { movie ->
                     Log.d("Movie", "Clicked Movie is $movie ")
-                    navController.navigate(route = MovieScreens.DetailScreen.name)
+                    navController.navigate(route = MovieScreens.DetailScreen.name + "/$movie")
                 }
             }
         }
