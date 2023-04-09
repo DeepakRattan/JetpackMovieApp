@@ -1,4 +1,4 @@
-# JetpackMovieApp
+# Jetpack Movie App
 Demonstration of Movie App using Jetpack Compose
 
 This project covers the followings : 
