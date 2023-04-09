@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.jetpackmovieapp.MovieRow
+import com.example.jetpackmovieapp.model.Movie
+import com.example.jetpackmovieapp.model.getMovies
 import com.example.jetpackmovieapp.navigation.MovieScreens
+import com.example.jetpackmovieapp.widgets.MovieRow
 
 /**
  * Created by Deepak Rattan on 07/04/23
@@ -31,7 +33,7 @@ fun HomeScreen(navController: NavController) {
                 Text(text = "Movies")
             }
         },
-    ) {padding->
+    ) { padding ->
         MainContent(navController = navController)
     }
 }
@@ -39,23 +41,14 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun MainContent(
     navController: NavController,
-    movieList: List<String> = listOf(
-        "Lagaan",
-        "Avtaar",
-        "Bahubali",
-        "RRR",
-        "Chak De",
-        "Dhoni",
-        "Bend it like Bekhem",
-        "DDLJ"
-    )
+    movieList: List<Movie> = getMovies()
 ) {
     Column(modifier = Modifier.padding(all = 12.dp)) {
         LazyColumn {
             items(items = movieList) {
                 MovieRow(movie = it) { movie ->
                     Log.d("Movie", "Clicked Movie is $movie ")
-                    navController.navigate(route = MovieScreens.DetailScreen.name + "/$movie")
+                    navController.navigate(route = MovieScreens.DetailScreen.name + "/${movie}")
                 }
             }
         }
