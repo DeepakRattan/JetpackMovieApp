@@ -96,6 +96,7 @@ fun MovieRow(
                     )
                 }
 
+                // Adds expand capability on the card to show more movie info
                 AnimatedVisibility(visible = expanded) {
                     Column {
                         Text(
