@@ -36,8 +36,12 @@ import com.example.jetpackmovieapp.model.getMovies
  * Created by Deepak Rattan on 09/04/23
  */
 
+@Preview
 @Composable
-fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit) {
+fun MovieRow(
+    movie: Movie = getMovies()[0],
+    onItemClick: (String) -> Unit = {}
+) {
 
     var expanded by remember {
         mutableStateOf(false)
