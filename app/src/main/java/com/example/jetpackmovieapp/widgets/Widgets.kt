@@ -93,26 +93,43 @@ fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit) {
                 }
 
                 AnimatedVisibility(visible = expanded) {
-                    Column() {
-                        Text(buildAnnotatedString {
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color.DarkGray,
-                                    fontSize = 13.sp
-                                )
-                            ) {
-                                append("Plot: ")
-                            }
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color.DarkGray,
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            ) {
-                                movie.plot?.let { append(it) }
-                            }
-                        })
+                    Column {
+                        Text(
+                            buildAnnotatedString {
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontSize = 13.sp
+                                    )
+                                ) {
+                                    append("Plot: ")
+                                }
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.Light
+                                    )
+                                ) {
+                                    movie.plot?.let { append(it) }
+                                }
+                            },
+                            modifier = Modifier.padding(4.dp)
+                        )
+                        Divider(modifier = Modifier.padding(4.dp))
+                        Text(
+                            text = "Director: ${movie.director}",
+                            style = MaterialTheme.typography.caption
+                        )
+                        Text(
+                            text = "Actors: ${movie.actors}",
+                            style = MaterialTheme.typography.caption
+                        )
+                        Text(
+                            text = "Rating: ${movie.imdbRating}",
+                            style = MaterialTheme.typography.caption
+                        )
+
                     }
                 }
 
